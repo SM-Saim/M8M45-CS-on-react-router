@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { NavLink, Outlet, useNavigation } from "react-router-dom";
 import Footer from "../Pages/Footer/Footer";
 import Spinner from "../components/Spinner/Spinner";
 
@@ -11,15 +11,32 @@ const MainLayOuts = () => {
         <h1 className="ml-12 text-2xl text-blue-700 font-bold">EasyBuy</h1>
         <nav>
           <ul className="flex space-x-10 mr-12">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/products">Products</a>
-            </li>
-            <li>
-              <a href="/dashboard">Dashboard</a>
-            </li>
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "bg-blue-200" : ""
+              }
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/products"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "bg-blue-200" : ""
+              }
+            >
+              Products
+            </NavLink>
+
+            <NavLink
+              to="/dashboard"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "bg-blue-200" : ""
+              }
+            >
+              Dashboard
+            </NavLink>
           </ul>
         </nav>
       </section>
@@ -31,6 +48,7 @@ const MainLayOuts = () => {
           <Outlet></Outlet>
         </div>
       )}
+
       <Footer></Footer>
     </div>
   );

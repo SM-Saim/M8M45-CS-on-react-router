@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { id, images, price, title } = product;
+
+  const navigate = useNavigate();
+  const handleSingleItemNavigate = () => {
+    const user = true;
+    if (user) {
+      navigate(`/products/${id}`);
+    } else {
+      navigate(`/`);
+    }
+  };
 
   return (
     <div>
@@ -75,6 +85,7 @@ const ProductCard = ({ product }) => {
             </span>
             <Link to={`/products/${id}`}>
               <button
+                onClick={handleSingleItemNavigate}
                 href="#"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
